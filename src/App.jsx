@@ -21,6 +21,7 @@ const App = () => {
   } = useCart();
 
   const handleAddToCart = (product) => {
+    console.log('Adding to cart:', product);
     addToCart(product);
   };
 
@@ -39,6 +40,7 @@ const App = () => {
   };
 
   const handleOrderSubmit = (orderData) => {
+    console.log('Order submitted:', orderData);
     setLastOrder(orderData);
     setOrderSuccess(true);
     clearCart();
@@ -58,7 +60,7 @@ const App = () => {
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#f5f5f5' }}>
-      {orderSuccess && (
+      {orderSuccess && lastOrder && (
         <Container style={{ 
           margin: '16px', 
           marginBottom: '0',
@@ -73,8 +75,9 @@ const App = () => {
               <Typography.Text weight="medium">
                 ✅ Заказ успешно оформлен!
               </Typography.Text>
+              <br />
               <Typography.Text size="s">
-                Заказ на сумму {lastOrder?.totalPrice} ₽ принят в обработку
+                Заказ на сумму {lastOrder.totalPrice} ₽ принят в обработку
               </Typography.Text>
             </div>
             <Button size="s" mode="tertiary" onClick={handleNewOrder}>

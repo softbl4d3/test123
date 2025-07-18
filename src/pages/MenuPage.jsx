@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Panel, Typography, Flex, Grid, Button, Counter } from '@maxhub/max-ui';
+import { Panel, Typography, Flex, Grid, Button } from '@maxhub/max-ui';
 import { products, categories } from '../data/products';
 import ProductCard from '../components/ProductCard';
 
@@ -24,12 +24,7 @@ const MenuPage = ({ onAddToCart, cartItemsCount, onGoToCart }) => {
             onClick={onGoToCart}
             disabled={cartItemsCount === 0}
           >
-            <Flex align="center" gap={8}>
-              🛒 Корзина
-              {cartItemsCount > 0 && (
-                <Counter value={cartItemsCount} />
-              )}
-            </Flex>
+            🛒 Корзина {cartItemsCount > 0 && `(${cartItemsCount})`}
           </Button>
         </Flex>
         
